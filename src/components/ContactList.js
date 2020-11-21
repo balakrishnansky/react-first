@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-export default function ContactList() {
+export default function ContactList(props) {
   return (
     <div>
-      <h1>Contact List </h1>
+      <h1>{props.name}</h1>
     </div>
   );
 }
