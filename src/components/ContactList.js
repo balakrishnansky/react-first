@@ -6,6 +6,7 @@ export default function ContactList(props) {
     <div>
       <h1>{props.name}</h1>
       <p>{props.description}</p>
+      <input type="checkbox" checked={props.completed} />
     </div>
   );
 }

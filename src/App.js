@@ -18,8 +18,10 @@ class App extends Component {
       console.log(datasource.data);
       return (
         <ContactList
+          key={datasource.id}
           name={datasource.name}
           description={datasource.description}
+          completed={datasource.completed}
         />
       );
     });
