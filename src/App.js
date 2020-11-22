@@ -9,19 +9,35 @@ class App extends Component {
     this.state = {
       myReadData: datasource.data
     };
+    this.handleClickEvent = this.handleClickEvent.bind(this);
   }
+  handleClickEvent(id) {
+    console.log("Testing == " + id);
+    this.setState(prevStates => {
+      // const copyValState = [...this.state.myReadData];
+      // const updatedVal = copyValState.map(contact => {
+      const updatedVal = prevStates.myReadData.map(contact => {
+        if (contact.id === id) {
+          contact.completed = !contact.completed;
+        }
+        return contact;
+      });
 
+      return {
+        myReadData: updatedVal
+      };
+    });
+  }
   render() {
     //const getArray = [...datasource.data];
     const readData = this.state.myReadData.map(datasource => {
       // return datasource.data.name;
-      console.log(datasource.data);
+      console.log(datasource);
       return (
         <ContactList
           key={datasource.id}
-          name={datasource.name}
-          description={datasource.description}
-          completed={datasource.completed}
+          datasource={datasource}
+          handleClickEvent={this.handleClickEvent}
         />
       );
     });
