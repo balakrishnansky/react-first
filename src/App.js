@@ -4,7 +4,7 @@ import datasource from "./components/datasource";
 import "./style.css";
 
 export default function App() {
-  console.log(datasource.data);
+  //console.log(datasource.data);
   //const getArray = [...datasource.data];
   const readData = datasource.data.map(datasource => {
     // return datasource.data.name;
