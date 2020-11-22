@@ -1,25 +1,36 @@
-import React from "react";
+import React, { Component } from "react";
 import ContactList from "./components/ContactList";
 import datasource from "./components/datasource";
 import "./style.css";
 
-export default function App() {
-  //console.log(datasource.data);
-  //const getArray = [...datasource.data];
-  const readData = datasource.data.map(datasource => {
-    // return datasource.data.name;
-    return (
-      <ContactList
-        name={datasource.name}
-        description={datasource.description}
-      />
-    );
-  });
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      myReadData: datasource.data
+    };
+  }
 
-  return (
-    <div>
-      {readData}
-      <p>Start editing to see some magic happen :)</p>
-    </div>
-  );
+  render() {
+    //const getArray = [...datasource.data];
+    const readData = this.state.myReadData.map(datasource => {
+      // return datasource.data.name;
+      console.log(datasource.data);
+      return (
+        <ContactList
+          name={datasource.name}
+          description={datasource.description}
+        />
+      );
+    });
+
+    return (
+      <div>
+        {readData}
+        <p>Start editing to see some magic happen :)</p>
+      </div>
+    );
+  }
 }
+
+export default App;
