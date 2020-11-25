@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ContactList from "./components/ContactList";
 import datasource from "./components/datasource";
+import AutoCompleteSearch from "./components/AutoCompleteSearch";
 import "./style.css";
 
 class App extends Component {
@@ -12,7 +13,7 @@ class App extends Component {
     this.handleClickEvent = this.handleClickEvent.bind(this);
   }
   handleClickEvent(id) {
-    console.log("Testing == " + id);
+    //console.log("Testing == " + id);
     this.setState(prevStates => {
       // const copyValState = [...this.state.myReadData];
       // const updatedVal = copyValState.map(contact => {
@@ -32,7 +33,7 @@ class App extends Component {
     //const getArray = [...datasource.data];
     const readData = this.state.myReadData.map(datasource => {
       // return datasource.data.name;
-      console.log(datasource);
+      //console.log(datasource);
       return (
         <ContactList
           key={datasource.id}
@@ -44,8 +45,7 @@ class App extends Component {
 
     return (
       <div>
-        {readData}
-        <p>Start editing to see some magic happen :)</p>
+        {/*readData*/} <AutoCompleteSearch />{" "}
       </div>
     );
   }
