@@ -9,6 +9,7 @@ class AutoCompleteSearch extends Component {
     };
     this.suggestionsHandler = this.suggestionsHandler.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
+    this.selectedText = this.selectedText.bind(this);
   }
   onChangeHandler = e => {
     const value = e.target.value;
@@ -25,6 +26,14 @@ class AutoCompleteSearch extends Component {
       text: value
     });
   };
+  selectedText = item => {
+    //console.log(item);
+    this.setState({
+      text: item,
+      suggestions: []
+    });
+  };
+
   suggestionsHandler = () => {
     // console.log(this.state.suggestions + "jjsjsj");
     let { suggestions } = this.state;
@@ -34,8 +43,10 @@ class AutoCompleteSearch extends Component {
     }
 
     const updatedVal = suggestions.map((item, index) => {
+      //console.log("iiiiiiiii" + index);
+
       return (
-        <li key={index} onClick={() => this.selectedText(key)}>
+        <li key={index} onClick={() => this.selectedText(item)}>
           {item}
         </li>
       );
@@ -47,7 +58,7 @@ class AutoCompleteSearch extends Component {
   render() {
     const { text, suggestions } = this.state;
     return (
-      <div>
+      <div id="notebooks">
         <h3>Auto Search </h3>
         <input name="text" value={text} onChange={this.onChangeHandler} />
         {this.suggestionsHandler()}
